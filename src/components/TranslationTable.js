@@ -43,68 +43,74 @@ function TranslationTable({ translations }) {
 
   return (
     <div className="col-md-8">
-      {/* Search input field */}
-      <div className="mb-3">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Search German Word"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-      </div>
-      {/* Display the total number of words */}
-      <div className="mb-3">Total Words: {totalTranslations}</div>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>German Word</th>
-            <th>English Translations</th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* Display translations for the current page */}
-          {currentTranslations.length === 0 ? (
-            <tr>
-              <td colSpan="3">No matching translations found.</td>
-            </tr>
-          ) : (
-            currentTranslations.map((translation, index) => (
-              <tr key={index}>
-                <td>{startIndex + index + 1}</td>
-                <td>{translation.germanWord}</td>
-                <td>{translation.englishTranslations.join(", ")}</td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
-
-      {/* Pagination buttons */}
-      <div className="d-flex justify-content-center">
-        {Array.from({ length: totalPages }, (_, index) => (
-          <button
-            key={index}
-            className={`btn btn-secondary ${
-              currentPage === index + 1 ? "active" : ""
-            }`}
-            onClick={() => handlePageChange(index + 1)}
-          >
-            {index + 1}
+      <div className="items">
+        {/* Search input field */}
+        <div className="mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search Here..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+        {/* Display the total number of words */}
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <div>Total Words: {totalTranslations}</div>
+          <button className="btn btn-primary pdf-button">
+            <PDFDownloadLink
+              document={<PDFDocument translations={sortedTranslations} />}
+              fileName="translations.pdf"
+            >
+              {({ blob, url, loading, error }) =>
+                loading ? "Loading document..." : "Download PDF"
+              }
+            </PDFDownloadLink>
           </button>
-        ))}
+        </div>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>German Words</th>
+              <th>English Translations</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* Display translations for the current page */}
+            {currentTranslations.length === 0 ? (
+              <tr>
+                <td colSpan="3">No matching translations found.</td>
+              </tr>
+            ) : (
+              currentTranslations.map((translation, index) => (
+                <tr key={index}>
+                  <td>{startIndex + index + 1}</td>
+                  <td>{translation.germanWord}</td>
+                  <td>{translation.englishTranslations.join(", ")}</td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+
+        {/* Pagination buttons */}
+        {translations.length > 10 && (
+          <div className="d-flex justify-content-center">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index}
+                className={`btn btn-secondary ${
+                  currentPage === index + 1 ? "active" : ""
+                }`}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
-      <button className="btn btn-primary pdf-button">
-        <PDFDownloadLink
-          document={<PDFDocument translations={sortedTranslations} />}
-          fileName="translations.pdf"
-        >
-          {({ blob, url, loading, error }) =>
-            loading ? "Loading document..." : "Download PDF"
-          }
-        </PDFDownloadLink>
-      </button>
     </div>
   );
 }

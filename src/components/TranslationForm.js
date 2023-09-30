@@ -24,6 +24,7 @@ function TranslationForm({ onAddTranslation }) {
 
   return (
     <div className="col-md-4">
+     <div className='input-form'>
       <div className="form-group">
         <label htmlFor="germanWord">German Word</label>
         <input
@@ -35,7 +36,7 @@ function TranslationForm({ onAddTranslation }) {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="englishTranslations">English Translations</label>
+        <label htmlFor="englishTranslations">English Translation</label>
         <input
           type="text"
           className="form-control"
@@ -47,6 +48,7 @@ function TranslationForm({ onAddTranslation }) {
       <button className="btn btn-primary" onClick={handleAddTranslation}>
         Add Translation
       </button>
+      </div>
     </div>
   );
 }

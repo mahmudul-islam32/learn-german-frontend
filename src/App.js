@@ -24,8 +24,9 @@ function App() {
 
   return (
     <div className="container mt-5">
-      <h1>Translation App</h1>
+      
       <div className="row">
+       <h1 className="logo-text">Learn German Words</h1>
         <TranslationForm onAddTranslation={handleAddTranslation} />
         <TranslationTable translations={translations} />
       </div>
