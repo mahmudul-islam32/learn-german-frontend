@@ -63,7 +63,7 @@ function TranslationTable({ translations }) {
               fileName="translations.pdf"
             >
               {({ blob, url, loading, error }) =>
-                loading ? "Loading document..." : "Download PDF"
+                loading ? "Loading document..." : "Download All Words"
               }
             </PDFDownloadLink>
           </button>

@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     padding: 6,
-    fontSize: 12,
+    fontSize: 10,
   },
   tableRow: {
     flexDirection: "row",
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
   tableCell: {
     padding: 6,
-    fontSize: 12,
+    fontSize: 10,
     flex: 1,
     borderRight: "1px solid #f5f5f5",
   },
