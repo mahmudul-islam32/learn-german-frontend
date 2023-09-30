@@ -10,14 +10,14 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/translations")
+      .get("https://learn-german-server.onrender.com/translations")
       .then((response) => setTranslations(response.data))
       .catch((error) => console.error(error));
   }, []);
 
   const handleAddTranslation = (newTranslation) => {
     axios
-      .post("http://localhost:3001/translations", newTranslation)
+      .post("https://learn-german-server.onrender.com/translations", newTranslation)
       .then((response) => setTranslations([...translations, response.data]))
       .catch((error) => console.error(error));
   };
