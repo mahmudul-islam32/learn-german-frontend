@@ -71,6 +71,10 @@ code {
   margin-bottom: 8px;
 }
 
+.d-flex.justify-content-center button {
+  margin-right: 10px;
+}
+
 @media (max-width: 768px) {
   .items {
     margin-left: 0px;
