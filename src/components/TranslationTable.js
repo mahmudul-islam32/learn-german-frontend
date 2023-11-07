@@ -68,7 +68,7 @@ function TranslationTable({ translations, loading }) {
             </PDFDownloadLink>
           </button>
         </div>
-        {loading && <Loader />}
+       
         <table className="table">
           <thead>
             <tr>
@@ -79,9 +79,10 @@ function TranslationTable({ translations, loading }) {
           </thead>
           <tbody>
             {/* Display translations for the current page */}
+            
             {currentTranslations.length === 0 ? (
               <tr>
-                <td colSpan="3">No matching translations found.</td>
+                <td colSpan="3"> {loading ? <Loader /> : <p>No matching translations found.</p>}</td>
               </tr>
             ) : (
               currentTranslations.map((translation, index) => (
