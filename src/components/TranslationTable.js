@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 
 import PDFDocument from "./PDFDocument";
+import Loader from "./Loader";
 
-function TranslationTable({ translations }) {
+function TranslationTable({ translations, loading }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -44,7 +45,6 @@ function TranslationTable({ translations }) {
   return (
     <div className="col-md-8">
       <div className="items">
-        {/* Search input field */}
         <div className="mb-3">
           <input
             type="text"
@@ -68,6 +68,7 @@ function TranslationTable({ translations }) {
             </PDFDownloadLink>
           </button>
         </div>
+        {loading && <Loader />}
         <table className="table">
           <thead>
             <tr>
