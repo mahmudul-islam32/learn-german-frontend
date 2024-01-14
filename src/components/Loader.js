@@ -1,8 +1,9 @@
 function Loader() {
   return (
-    <div className="loader-container">
-      <div className="loader"></div>
-      <p>Loading Words...</p>
+    <div className="SpinnerWrapper">
+      <div className="Spinner">
+        <p>Loading...</p>
+      </div>
     </div>
   );
 }

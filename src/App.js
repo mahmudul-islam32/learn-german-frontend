@@ -4,6 +4,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TranslationForm from "./components/TranslationForm";
 import TranslationTable from "./components/TranslationTable";
+import Loader from "./components/Loader";
 
 function App() {
   const [translations, setTranslations] = useState([]);
@@ -37,6 +38,8 @@ function App() {
         setLoading(false); // Set loadingAdd back to false after the request completes or fails
       });
   };
+
+  if (loading) return <Loader />;
 
   return (
     <div className="container mt-5">

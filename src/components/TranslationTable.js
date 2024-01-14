@@ -42,6 +42,8 @@ function TranslationTable({ translations, loading }) {
 
   const currentTranslations = sortedTranslations.slice(startIndex, endIndex);
 
+  if (loading) return <Loader />;
+
   return (
     <div className="col-md-8">
       <div className="items">
@@ -68,7 +70,7 @@ function TranslationTable({ translations, loading }) {
             </PDFDownloadLink>
           </button>
         </div>
-       
+
         <table className="table">
           <thead>
             <tr>
@@ -79,10 +81,12 @@ function TranslationTable({ translations, loading }) {
           </thead>
           <tbody>
             {/* Display translations for the current page */}
-            
+
             {currentTranslations.length === 0 ? (
               <tr>
-                <td colSpan="3"> {loading ? <Loader /> : <p>No matching translations found.</p>}</td>
+                <td colSpan="3">
+                  <p>No matching translations found.</p>
+                </td>
               </tr>
             ) : (
               currentTranslations.map((translation, index) => (
